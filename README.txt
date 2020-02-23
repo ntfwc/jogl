@@ -1,3 +1,8 @@
+About this fork
+------------------------------------
+This backports fixes from https://github.com/sgothel/jogl/pull/105 for
+this bug: https://jogamp.org/bugzilla/show_bug.cgi?id=1357.
+
 Organization of the JOGL source tree
 ------------------------------------
 
