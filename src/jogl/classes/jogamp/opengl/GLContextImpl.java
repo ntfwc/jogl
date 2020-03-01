@@ -2358,7 +2358,7 @@ public abstract class GLContextImpl extends GLContext {
             }
         }
         if ( compatCtx && (major > 3 || (major == 3 && minor >= 1)) &&
-             vendorVersion.compareTo(mesaSafeGL3Compat) < 0 ) {
+             (isDriverIntel || vendorVersion.compareTo(mesaSafeGL3Compat) < 0)) {
             final int quirk = GLRendererQuirks.GLNonCompliant;
             if(DEBUG) {
                 System.err.println("Quirk: "+GLRendererQuirks.toString(quirk)+": cause: Renderer " + glRenderer);
