@@ -2114,6 +2114,7 @@ public abstract class GLContextImpl extends GLContext {
     final boolean isX11 = NativeWindowFactory.TYPE_X11 == NativeWindowFactory.getNativeWindowType(true);
     final boolean isWindows = Platform.getOSType() == Platform.OSType.WINDOWS;
     final boolean isDriverMesa = glRenderer.contains(MesaSP) || glRenderer.contains("Gallium ") || glVersion.contains(MesaSP);
+    final boolean isVendorIntel = glVendor.startsWith("Intel");
 
     final boolean isDriverATICatalyst;
     final boolean isDriverNVIDIAGeForce;
@@ -2121,7 +2122,7 @@ public abstract class GLContextImpl extends GLContext {
     if( !isDriverMesa ) {
         isDriverATICatalyst = glVendor.contains("ATI Technologies") || glRenderer.startsWith("ATI ");
         isDriverNVIDIAGeForce = glVendor.contains("NVIDIA Corporation") || glRenderer.contains("NVIDIA ");
-        isDriverIntel = glVendor.startsWith("Intel");
+        isDriverIntel = isVendorIntel;
     } else {
         isDriverATICatalyst = false;
         isDriverNVIDIAGeForce = false;
@@ -2358,7 +2359,7 @@ public abstract class GLContextImpl extends GLContext {
             }
         }
         if ( compatCtx && (major > 3 || (major == 3 && minor >= 1)) &&
-             (isDriverIntel || vendorVersion.compareTo(mesaSafeGL3Compat) < 0)) {
+             (isVendorIntel || vendorVersion.compareTo(mesaSafeGL3Compat) < 0)) {
             final int quirk = GLRendererQuirks.GLNonCompliant;
             if(DEBUG) {
                 System.err.println("Quirk: "+GLRendererQuirks.toString(quirk)+": cause: Renderer " + glRenderer);
