@@ -1,7 +1,10 @@
 About this fork
 ------------------------------------
-This backports fixes from https://github.com/sgothel/jogl/pull/105 for
-this bug: https://jogamp.org/bugzilla/show_bug.cgi?id=1357.
+This backports some fixes to version 2.3.2 for newer versions of the Mesa graphics driver.
+
+Bugs fixed:
+* AMD mesa identification bug: https://jogamp.org/bugzilla/show_bug.cgi?id=1357
+* GL compat quirk misapplied bug: https://jogamp.org/bugzilla/show_bug.cgi?id=1385
 
 Organization of the JOGL source tree
 ------------------------------------
